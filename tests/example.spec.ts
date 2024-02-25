@@ -1,6 +1,6 @@
 import { test, expect, chromium } from '@playwright/test';
 
-test('Without fixtures', async ({  }) => {
+test.skip('Without fixtures', async ({  }) => {
   const browser = await chromium.launch();
 
   const context = await browser.newContext();
@@ -21,7 +21,7 @@ test('Without fixtures', async ({  }) => {
 
 });
 
-test.only('With fixtures', async ({ page, context, browser, request, browserName}) => {
+test.skip('With fixtures', async ({ page, context, browser, request, browserName}) => {
   await page.goto("https://www.next.ua/uk")
 
   console.log(await context.cookies());

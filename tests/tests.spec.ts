@@ -1,26 +1,18 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from '../pages/HomePage';
+import { test } from "../POM/fixture.ts";
 
 
-test('getting started should contain table of contents', async ({ page }) => {
-  const playwrightDev = new HomePage(page);
-  await playwrightDev.goto();
-  await playwrightDev.getStarted();
-  await expect(playwrightDev.tocList).toHaveText([
-    `How to install Playwright`,
-    `What's Installed`,
-    `How to run the example test`,
-    `How to open the HTML test report`,
-    `Write tests using web first assertions, page fixtures and locators`,
-    `Run single test, multiple tests, headed mode`,
-    `Generate tests with Codegen`,
-    `See a trace of your tests`
-  ]);
+test("Home  page test", async ({ homePage }) => {
+  homePage.goto();
 });
 
-test('should show Page Object Model article', async ({ page }) => {
-  const playwrightDev = new HomePage(page);
-  await playwrightDev.goto();
-  await playwrightDev.pageObjectModel();
-  await expect(page.locator('article')).toContainText('Page Object Model is a common pattern');
+test("Login test", async ({ loginPage }) => {
+  loginPage.gotoLoginPage()
+  loginPage.login("katetest22009@gmail.com", "Test123");
 });
+
+test("Log out test", async ({ loginPage }) => {
+    loginPage.gotoLoginPage()
+    loginPage.login("katetest22009@gmail.com", "Test123");
+    loginPage.logout()
+  });
+
